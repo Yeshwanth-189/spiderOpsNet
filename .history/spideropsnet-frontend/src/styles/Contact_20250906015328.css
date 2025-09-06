@@ -1,0 +1,128 @@
+:root {
+  --brand-dark: #0a2540;
+  --brand-blue: #1976d2;
+  --text: #333;
+  --muted: #666;
+  --bg: #fff;
+  --border: #e6e6e6;
+}
+
+.container {
+  width: min(1100px, 92%);
+  margin-inline: auto;
+}
+.contact-section {
+  background: var(--bg);
+  color: var(--text);
+  padding: 64px 0 80px;
+}
+
+.contact-grid {
+  display: grid;
+  grid-template-columns: 1.05fr 1.5fr;
+  gap: 48px;
+}
+
+.contact-info,
+.contact-form-wrap {
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  padding: 28px;
+  background: #fff;
+}
+
+.contact-info {
+  background: linear-gradient(180deg, #ffffff 0%, #f9fbff 100%);
+}
+
+.contact-title {
+  margin: 0 0 12px;
+  font-family: "Playfair Display", serif;
+  font-weight: 700;
+  color: var(--brand-dark);
+}
+.contact-subtitle {
+  margin: -4px 0 20px;
+  color: var(--muted);
+}
+
+.info-block .org {
+  margin: 8px 0 12px;
+  font-weight: 600;
+}
+.info-block .label {
+  margin: 18px 0 6px;
+  font-size: 0.9rem;
+  color: var(--muted);
+}
+address {
+  font-style: normal;
+  line-height: 1.6;
+}
+.email {
+  color: var(--brand-blue);
+  text-decoration: none;
+}
+.email:hover {
+  text-decoration: underline;
+}
+
+.contact-form .row {
+  display: grid;
+  gap: 16px;
+  margin-bottom: 16px;
+}
+.contact-form .row.two {
+  grid-template-columns: 1fr 1fr;
+}
+
+.field label {
+  display: block;
+  margin-bottom: 6px;
+  font-size: 0.95rem;
+  color: var(--brand-dark);
+}
+.field input,
+.field textarea {
+  width: 100%;
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 12px 14px;
+  font: inherit;
+  background: #fff;
+  outline: none;
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+.field input:focus,
+.field textarea:focus {
+  border-color: var(--brand-blue);
+  box-shadow: 0 0 0 4px rgba(25, 118, 210, 0.12);
+}
+
+.btn-primary {
+  display: inline-block;
+  border: none;
+  border-radius: 999px;
+  padding: 12px 22px;
+  font-weight: 600;
+  background: var(--brand-dark);
+  color: #fff;
+  cursor: pointer;
+  transition: transform 0.06s ease, opacity 0.2s ease;
+}
+.btn-primary:hover {
+  opacity: 0.92;
+}
+.btn-primary:active {
+  transform: translateY(1px);
+}
+
+@media (max-width: 900px) {
+  .contact-grid {
+    grid-template-columns: 1fr;
+    gap: 24px;
+  }
+  .contact-form .row.two {
+    grid-template-columns: 1fr;
+  }
+}

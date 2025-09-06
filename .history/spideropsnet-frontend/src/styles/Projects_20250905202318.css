@@ -1,0 +1,91 @@
+.projects-section {
+  padding: clamp(48px, 6vw, 96px) 0;
+  background: var(--bg, #fff);
+}
+
+.container {
+  width: min(1120px, 92vw);
+  margin: 0 auto;
+}
+
+.projects-header {
+  text-align: center;
+  margin-bottom: clamp(28px, 4vw, 48px);
+}
+
+.projects-list {
+  display: flex;
+  flex-direction: column;
+  gap: 60px;
+}
+
+.project-row {
+  display: flex;
+  align-items: center;
+  gap: 32px;
+}
+
+.project-row.reverse {
+  flex-direction: row-reverse;
+}
+
+.project-media,
+.project-body {
+  flex: 1;
+}
+
+.media-frame {
+  border-radius: 18px;
+  overflow: hidden;
+  box-shadow: 0 10px 30px rgba(16, 24, 40, 0.08);
+}
+
+.media-frame img {
+  width: 100%;
+  height: auto;
+  display: block;
+  object-fit: cover;
+  transition: transform 600ms ease;
+}
+
+.media-frame:hover img {
+  transform: scale(1.05);
+}
+
+.card {
+  padding: clamp(16px, 2vw, 24px);
+  border-radius: 18px;
+  background: var(--surface, #f5f7fb);
+  box-shadow: 0 10px 30px rgba(16, 24, 40, 0.06);
+}
+
+.project-title {
+  font: 700 clamp(20px, 2.6vw, 26px) / 1.2 "Playfair Display", Georgia, serif;
+  margin-bottom: 6px;
+}
+
+.project-kicker {
+  color: var(--brand-accent, #1976d2);
+  margin-bottom: 12px;
+}
+
+.project-objective {
+  margin-bottom: 12px;
+}
+
+.project-points {
+  padding-left: 1.1rem;
+  margin-bottom: 12px;
+}
+
+.project-meta {
+  font-size: 0.9rem;
+  color: var(--muted, #6b7280);
+}
+
+@media (max-width: 880px) {
+  .project-row,
+  .project-row.reverse {
+    flex-direction: column;
+  }
+}

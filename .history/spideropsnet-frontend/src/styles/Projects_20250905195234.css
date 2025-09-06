@@ -1,0 +1,194 @@
+/* ======================= CSS (save as src/components/projects.css) ======================= */
+:root {
+  /* Pulls from your variables.css if present; fallbacks included */
+  --brand-dark: var(--color-primary, #0a2540);
+  --brand-accent: var(--color-secondary, #1976d2);
+  --bg: var(--color-bg, #ffffff);
+  --ink: var(--color-ink, #111827);
+  --muted: var(--color-muted, #6b7280);
+  --surface: var(--color-surface, #f5f7fb);
+  --ring: rgba(25, 118, 210, 0.25);
+}
+
+.projects-section {
+  position: relative;
+  padding: clamp(48px, 6vw, 96px) 0;
+  background: radial-gradient(
+      1200px 600px at 10% -20%,
+      rgba(25, 118, 210, 0.1),
+      transparent 60%
+    ),
+    radial-gradient(
+      1200px 600px at 90% 120%,
+      rgba(10, 37, 64, 0.08),
+      transparent 60%
+    ),
+    var(--bg);
+  overflow: hidden;
+}
+
+.container {
+  width: min(1120px, 92vw);
+  margin: 0 auto;
+}
+
+.projects-header {
+  text-align: center;
+  margin-bottom: clamp(28px, 4vw, 48px);
+}
+.projects-header .eyebrow {
+  color: var(--brand-accent);
+  font: 600 0.85rem/1.2 "Roboto", system-ui, -apple-system, Segoe UI, Arial;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+.projects-header .title {
+  font: 700 clamp(28px, 4vw, 40px) / 1.1 "Playfair Display", Georgia, serif;
+  color: var(--brand-dark);
+  margin: 6px 0 10px;
+}
+.projects-header .subtitle {
+  color: var(--muted);
+  font: 400 1rem/1.6 "Roboto", system-ui, -apple-system, Segoe UI, Arial;
+}
+
+/* 12-column grid with gutters on 1 and 12 */
+.grid-12 {
+  display: grid;
+  grid-template-columns: repeat(12, minmax(0, 1fr));
+  gap: clamp(8px, 1.2vw, 16px);
+}
+
+.project-row {
+  position: relative;
+  display: contents; /* let children place themselves on the 12-col grid */
+}
+
+.project-media {
+  grid-row: span 1;
+}
+
+.media-frame {
+  position: relative;
+  overflow: hidden;
+  border-radius: 18px;
+  background: linear-gradient(180deg, #fff, #f3f6fb);
+  box-shadow: 0 10px 30px rgba(16, 24, 40, 0.08);
+}
+
+.media-frame::after {
+  /* subtle border shimmer */
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  pointer-events: none;
+  background: linear-gradient(
+    135deg,
+    rgba(25, 118, 210, 0.15),
+    transparent 30%,
+    rgba(10, 37, 64, 0.1)
+  );
+  mix-blend-mode: overlay;
+}
+
+.media-frame img {
+  width: 100%;
+  height: 100%;
+  display: block;
+  object-fit: cover; /* ensure full bleed */
+  aspect-ratio: 16 / 10;
+  transform: scale(1.02);
+  transition: transform 600ms ease;
+}
+
+.media-frame:hover img {
+  transform: scale(1.06);
+}
+
+.project-body {
+  grid-row: span 1;
+}
+
+.card {
+  height: 100%;
+  display: grid;
+  align-content: start;
+  gap: 14px;
+  padding: clamp(16px, 2vw, 24px);
+  border-radius: 18px;
+  background: color-mix(in oklab, var(--surface) 90%, white 10%);
+  outline: 1px solid rgba(25, 118, 210, 0.08);
+  box-shadow: 0 10px 30px rgba(16, 24, 40, 0.06);
+}
+
+.project-title {
+  font: 700 clamp(20px, 2.6vw, 26px) / 1.2 "Playfair Display", Georgia, serif;
+  color: var(--brand-dark);
+}
+
+.project-kicker {
+  font: 600 0.95rem/1.3 "Roboto", system-ui, -apple-system, Segoe UI, Arial;
+  color: var(--brand-accent);
+}
+
+.project-objective {
+  font: 400 1rem/1.7 "Roboto", system-ui, -apple-system, Segoe UI, Arial;
+  color: var(--ink);
+}
+
+.project-points {
+  margin: 2px 0 6px 0;
+  padding-left: 1.1rem;
+  color: var(--ink);
+}
+.project-points li {
+  margin: 4px 0;
+}
+
+.project-meta {
+  display: flex;
+  gap: 8px;
+  align-items: baseline;
+  flex-wrap: wrap;
+}
+.project-meta .label {
+  font: 700 0.8rem/1 "Roboto";
+  color: var(--brand-dark);
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+.project-meta .value {
+  font: 400 0.95rem/1.4 "Roboto";
+  color: var(--muted);
+}
+
+/* Responsive behavior */
+@media (max-width: 1024px) {
+  /* keep 12 columns but tighten spacing */
+}
+
+@media (max-width: 880px) {
+  /* switch to 4-column grid (like your mobile system) */
+  .grid-12 {
+    grid-template-columns: repeat(4, 1fr);
+  }
+
+  /* gutters collapse; make image span full width then text */
+  .project-media {
+    grid-column: 1 / 5 !important;
+  }
+  .project-body {
+    grid-column: 1 / 5 !important;
+  }
+
+  .media-frame img {
+    aspect-ratio: 16 / 9;
+  }
+}
+
+/* Focus ring for a11y */
+.media-frame:focus-within,
+.card:focus-within {
+  box-shadow: 0 0 0 6px var(--ring);
+}

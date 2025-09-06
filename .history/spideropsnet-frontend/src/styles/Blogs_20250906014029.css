@@ -1,0 +1,167 @@
+/* src/styles/blog-index.css */
+/* assumes you already defined your brand variables in variables.css */
+:root {
+  /* Fallbacks in case variables.css not loaded */
+  --brand-dark: #0a2540;
+  --brand-light: #1976d2;
+  --bg: #ffffff;
+  --text: #333333;
+  --muted: #666666;
+  --border: #e9eef5;
+  --chip: #f5f8ff;
+}
+
+.section-shell {
+  padding: clamp(24px, 4vw, 48px) 16px;
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+.blog-index__header {
+  text-align: center;
+  font-family: "Playfair Display", serif;
+  font-size: clamp(28px, 4vw, 42px);
+  font-weight: 700;
+  color: var(--brand);
+  margin-bottom: clamp(24px, 4vw, 40px);
+}
+
+.blog-index__title {
+  font-family: "Playfair Display", serif; /* per your branding */
+  font-size: clamp(28px, 4vw, 40px);
+  line-height: 1.2;
+  color: var(--color-primary);
+  margin: 0;
+}
+
+.blog-index__subtitle {
+  margin-top: 6px;
+  color: var(--muted);
+  font-size: 0.975rem;
+}
+
+.blog-index__grid {
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  gap: 16px;
+}
+
+/* On desktop: 2 cards per row (span 6 each). On wide: 3 per row if you like. */
+.category-card {
+  grid-column: span 6;
+  background: var(--bg);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  padding: 16px;
+  transition: transform 160ms ease, box-shadow 160ms ease,
+    border-color 160ms ease;
+  box-shadow: 0 1px 2px rgba(10, 37, 64, 0.04);
+}
+
+.category-card:hover,
+.category-card:focus-within {
+  transform: translateY(-2px);
+  border-color: rgba(25, 118, 210, 0.35);
+  box-shadow: 0 8px 24px rgba(10, 37, 64, 0.08);
+}
+
+.category-card__header {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 12px;
+  align-items: start;
+  margin-bottom: 10px;
+  color: var(--color-secondary);
+}
+
+.category-card__icon {
+  width: 40px;
+  height: 40px;
+  display: grid;
+  place-items: center;
+  border-radius: 12px;
+  background: var(--chip);
+  font-size: 20px;
+}
+
+.category-card__title {
+  font-family: "Playfair Display", serif;
+  font-size: 20px;
+  color: var(--brand-dark);
+  margin: 0 0 2px 0;
+}
+
+.category-card__blurb {
+  margin: 0;
+  color: var(--muted);
+  font-size: 0.95rem;
+}
+
+.category-card__links ul {
+  list-style: none;
+  padding: 0;
+  margin: 8px 0 0 0;
+}
+
+.link-row {
+  border-top: 1px dashed var(--border);
+}
+
+.link-row:first-child {
+  border-top: none;
+}
+
+.link-row__anchor {
+  display: grid;
+  grid-template-columns: 12px 1fr auto;
+  align-items: center;
+  gap: 10px;
+  padding: 12px 6px;
+  text-decoration: none;
+  color: var(--text);
+  outline: none;
+}
+
+.link-row__anchor:hover .link-row__text,
+.link-row__anchor:focus .link-row__text {
+  color: var(--brand-light);
+}
+
+.link-row__dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 999px;
+  background: var(--brand-light);
+  opacity: 0.65;
+}
+
+.link-row__text {
+  font-size: 0.98rem;
+}
+
+.link-row__chev {
+  opacity: 0;
+  transform: translateX(-4px);
+  transition: all 160ms ease;
+}
+
+.link-row__anchor:hover .link-row__chev,
+.link-row__anchor:focus .link-row__chev {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+/* Responsive: stack to 1 card per row on mobile */
+@media (max-width: 860px) {
+  .category-card {
+    grid-column: span 12;
+  }
+}
+
+/* Optional: prefer reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  .category-card,
+  .link-row__chev {
+    transition: none;
+  }
+}

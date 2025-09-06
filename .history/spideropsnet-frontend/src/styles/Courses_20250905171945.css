@@ -1,0 +1,391 @@
+/* src/styles/Courses.css */
+/* Uses your palette (variables.css) if present. Falls back to defaults. */
+:root {
+  --navy: var(--color-navy, #0a2540);
+  --blue: var(--color-blue, #1976d2);
+  --bg: var(--color-bg, #ffffff);
+  --g900: var(--gray-900, #333333);
+  --g600: var(--gray-600, #666666);
+  --g100: var(--gray-100, #f5f5f5);
+
+  --radius-lg: 16px;
+  --radius-xl: 22px;
+  --shadow-sm: 0 6px 18px rgba(10, 37, 64, 0.08);
+  --shadow-md: 0 10px 30px rgba(10, 37, 64, 0.12);
+  --focus: 0 0 0 3px rgba(25, 118, 210, 0.25);
+  --gutter: 16px;
+}
+
+/* Section background: gradient mesh with subtle noise */
+.courses-wrap {
+  position: relative;
+  padding: clamp(28px, 4vw, 56px) 0;
+  color: var(--g900);
+  background: radial-gradient(
+      1200px 600px at 10% -10%,
+      rgba(25, 118, 210, 0.1),
+      transparent 60%
+    ),
+    radial-gradient(
+      1000px 500px at 110% 10%,
+      rgba(10, 37, 64, 0.12),
+      transparent 60%
+    ),
+    var(--bg);
+  overflow: hidden;
+}
+
+/* 12-col scaffold */
+.grid12 {
+  display: grid;
+  grid-template-columns: repeat(12, minmax(0, 1fr));
+  gap: var(--gutter);
+  width: min(1200px, 92vw);
+  margin-inline: auto;
+}
+
+/* Glass card look (both columns) */
+.glass-card {
+  position: relative;
+  background: linear-gradient(
+    180deg,
+    rgba(255, 255, 255, 0.72),
+    rgba(255, 255, 255, 0.66)
+  );
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+  border-radius: var(--radius-xl);
+  border: 1px solid rgba(10, 37, 64, 0.1);
+  box-shadow: var(--shadow-sm);
+}
+
+/* Top split */
+.roi-download {
+  align-items: stretch;
+  margin-bottom: clamp(24px, 4vw, 48px);
+}
+.roi-download .col-left {
+  grid-column: 2 / 7;
+  padding: clamp(18px, 2.2vw, 28px);
+}
+.roi-download .col-right {
+  grid-column: 7 / 12;
+  padding: clamp(18px, 2.2vw, 28px);
+}
+
+/* Kicker + headings */
+.kicker {
+  display: inline-block;
+  font-size: 12px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--blue);
+  background: rgba(25, 118, 210, 0.08);
+  border: 1px solid rgba(25, 118, 210, 0.2);
+  padding: 6px 10px;
+  border-radius: 999px;
+  margin-bottom: 10px;
+}
+
+.roi-title {
+  font-family: "Playfair Display", serif;
+  font-size: clamp(26px, 3.2vw, 38px);
+  line-height: 1.15;
+  color: var(--navy);
+  margin: 0 0 10px;
+}
+.roi-title .accent {
+  color: var(--blue);
+}
+
+.roi-desc {
+  margin: 0 0 12px;
+  color: var(--g600);
+}
+
+/* feature chips */
+.chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin: 8px 0 12px;
+  padding: 0;
+  list-style: none;
+}
+.chips li {
+  font-size: 12px;
+  color: var(--navy);
+  border: 1px solid rgba(10, 37, 64, 0.12);
+  border-radius: 999px;
+  padding: 6px 10px;
+  background: rgba(255, 255, 255, 0.7);
+}
+
+.roi-bullets {
+  margin: 0 0 10px 0;
+  padding: 0;
+  list-style: none;
+}
+.roi-bullets li {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: var(--g900);
+  margin: 6px 0;
+}
+.roi-bullets svg {
+  flex: 0 0 auto;
+  color: var(--blue);
+}
+
+.fine-print {
+  font-size: 12px;
+  color: var(--g600);
+  margin-top: 6px;
+}
+
+/* Floating label inputs with icons */
+.download-form {
+  display: grid;
+  gap: 14px;
+}
+
+.fl-input {
+  position: relative;
+  display: grid;
+}
+.fl-input input {
+  width: 100%;
+  padding: 14px 12px 12px 40px; /* room for icon */
+  border-radius: 14px;
+  border: 1px solid rgba(10, 37, 64, 0.14);
+  background: #fff;
+  font-size: 14px;
+  outline: none;
+  transition: box-shadow 0.15s ease, border-color 0.15s ease,
+    transform 0.05s ease;
+}
+.fl-input input:focus {
+  border-color: var(--blue);
+  box-shadow: var(--focus);
+}
+.fl-input .fl-icon {
+  position: absolute;
+  left: 12px;
+  top: 40%;
+  transform: translateY(-50%);
+  pointer-events: none;
+  opacity: 0.8;
+}
+.fl-input label {
+  position: absolute;
+  left: 40px;
+  top: 40%;
+  transform: translateY(-50%);
+  color: var(--g600);
+  background: transparent;
+  transition: all 0.15s ease;
+  padding: 0 0.2ch;
+  pointer-events: none;
+}
+.fl-input input:not(:placeholder-shown) + label,
+.fl-input input:focus + label {
+  top: -8px;
+  transform: none;
+  font-size: 12px;
+  color: var(--blue);
+  background: #fff;
+  border-radius: 6px;
+  padding: 0 6px;
+}
+.fl-input.invalid input {
+  border-color: #d32f2f;
+}
+.fl-input.invalid input:focus {
+  box-shadow: 0 0 0 3px rgba(211, 47, 47, 0.15);
+}
+.field-error {
+  margin-top: 6px;
+  font-size: 12px;
+  color: #d32f2f;
+}
+
+/* CTA button with gradient edge + ripple */
+.btn-download {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 12px 18px;
+  border-radius: 999px;
+  border: 0;
+  font-weight: 600;
+  color: #fff;
+  cursor: pointer;
+  overflow: hidden;
+  box-shadow: var(--shadow-md);
+  isolation: isolate;
+  background: linear-gradient(180deg, #1d7fe3, #1668b6);
+  transition: transform 0.06s ease, filter 0.18s ease;
+}
+.btn-download .btn-bg {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: radial-gradient(
+    120% 120% at 0% 0%,
+    rgba(255, 255, 255, 0.25),
+    transparent 60%
+  );
+  opacity: 0.8;
+  mix-blend-mode: screen;
+}
+.btn-download:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+  filter: grayscale(0.1);
+}
+.btn-download:hover:not(:disabled) {
+  filter: brightness(1.04);
+}
+.btn-download:active:not(:disabled) {
+  transform: translateY(1px);
+}
+.btn-download .btn-ripple {
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  background: radial-gradient(
+    180px 180px at var(--x, 50%) var(--y, 50%),
+    rgba(255, 255, 255, 0.35),
+    transparent 40%
+  );
+  transition: opacity 0.25s ease;
+}
+.btn-download:focus-visible {
+  outline: none;
+  box-shadow: var(--focus);
+}
+
+/* Ripple interaction */
+.btn-download:where(:hover, :focus-visible) .btn-ripple {
+  opacity: 0.9;
+}
+
+/* Success */
+.form-success {
+  margin-top: 6px;
+  font-size: 14px;
+  color: #2e7d32;
+}
+
+/* Courses area */
+.courses-grid {
+  row-gap: 18px;
+}
+.col-2-11 {
+  grid-column: 2 / 12;
+}
+
+.courses-head h3 {
+  margin: 0;
+  font-family: "Playfair Display", serif;
+  font-size: clamp(20px, 2.2vw, 28px);
+  color: var(--navy);
+}
+.subhead {
+  margin: 6px 0 0;
+  color: var(--g600);
+}
+
+.courses-cards {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 16px;
+}
+.course-card {
+  background: #fff;
+  border: 1px solid rgba(10, 37, 64, 0.08);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  display: grid;
+  grid-template-rows: auto 1fr auto;
+  box-shadow: var(--shadow-sm);
+  transform: translateY(0);
+  transition: transform 0.18s ease, box-shadow 0.18s ease,
+    border-color 0.18s ease;
+}
+.course-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 16px 36px rgba(10, 37, 64, 0.12);
+  border-color: rgba(10, 37, 64, 0.16);
+}
+.course-media img {
+  width: 100%;
+  height: 168px;
+  object-fit: cover;
+  display: block;
+}
+.course-body {
+  padding: 14px;
+}
+.course-body h4 {
+  margin: 0 0 6px;
+  font-size: 18px;
+  color: var(--navy);
+}
+.course-body p {
+  margin: 0;
+  color: var(--g600);
+}
+.course-actions {
+  padding: 12px 14px 16px;
+}
+
+.btn-outline {
+  display: inline-block;
+  text-decoration: none;
+  font-weight: 600;
+  border: 1.5px solid var(--blue);
+  color: var(--blue);
+  padding: 10px 14px;
+  border-radius: 999px;
+  transition: background 0.15s ease, color 0.15s ease, transform 0.06s ease;
+}
+.btn-outline:hover {
+  background: var(--blue);
+  color: #fff;
+}
+.btn-outline:active {
+  transform: translateY(1px);
+}
+
+.checkbox {
+  background-color: white;
+}
+/* Layout responsiveness */
+@media (max-width: 1024px) {
+  .roi-download .col-left {
+    grid-column: 2 / 12;
+  }
+  .roi-download .col-right {
+    grid-column: 2 / 12;
+  }
+  .courses-cards {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+@media (max-width: 640px) {
+  .grid12 {
+    width: 94vw;
+  }
+  .courses-cards {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Pointer coordinates for ripple (no JS—works with :hover position on most browsers) */
+.btn-download:hover {
+  --x: 20%;
+  --y: 30%;
+}

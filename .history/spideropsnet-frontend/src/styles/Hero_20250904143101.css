@@ -1,0 +1,20 @@
+.hero-grid {
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  max-width: 1400px;
+}
+
+.col-1 {
+  grid-column: 1 / 2;
+}
+
+.col-2to11 {
+  grid-column: 2 / 12;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.col-12 {
+  display: none;
+}

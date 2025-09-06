@@ -1,0 +1,275 @@
+/* src/components/CoursesSection.css */
+
+/* Uses your variables.css palette & fonts if already loaded:
+   --color-navy: #0A2540;
+   --color-blue: #1976D2;
+   --color-bg: #FFFFFF;
+   --gray-900: #333333;
+   --gray-600: #666666;
+   --gray-100: #F5F5F5;
+   font-family headings: "Playfair Display", serif;
+   font-family body: "Roboto", system-ui, -apple-system, Segoe UI, Arial, sans-serif;
+*/
+
+:root {
+  --gutter: 16px;
+  --radius-lg: 16px;
+  --radius-xl: 20px;
+  --shadow-sm: 0 2px 10px rgba(0, 0, 0, 0.06);
+  --shadow-md: 0 8px 24px rgba(0, 0, 0, 0.08);
+  --focus: 0 0 0 3px rgba(25, 118, 210, 0.25);
+}
+
+.courses-wrap {
+  padding: clamp(24px, 4vw, 48px) 0;
+  background: var(--color-bg, #fff);
+  color: var(--gray-900, #333);
+}
+
+/* 12-column grid scaffold with gutters (1 & 12) */
+.grid12 {
+  display: grid;
+  grid-template-columns: repeat(12, minmax(0, 1fr));
+  gap: var(--gutter);
+  width: min(1200px, 92vw);
+  margin-inline: auto;
+}
+
+/* ROI Download (top section) */
+.roi-download {
+  align-items: stretch;
+  margin-bottom: clamp(24px, 4vw, 48px);
+}
+
+/* Left info: columns 2-6 on desktop */
+.roi-download .col-left {
+  grid-column: 2 / 7;
+  background: var(--gray-100, #f5f5f5);
+  border-radius: var(--radius-xl);
+  padding: clamp(16px, 2vw, 28px);
+  box-shadow: var(--shadow-sm);
+}
+
+/* Right form: columns 7-11 on desktop */
+.roi-download .col-right {
+  grid-column: 7 / 12;
+  background: #fff;
+  border: 1px solid rgba(0, 0, 0, 0.06);
+  border-radius: var(--radius-xl);
+  padding: clamp(16px, 2vw, 28px);
+  box-shadow: var(--shadow-sm);
+}
+
+.eyebrow {
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  font-size: 12px;
+  color: var(--color-blue, #1976d2);
+  margin: 0 0 8px;
+  font-weight: 600;
+}
+
+.roi-title {
+  font-family: "Playfair Display", serif;
+  font-size: clamp(26px, 3.2vw, 38px);
+  line-height: 1.2;
+  color: var(--color-navy, #0a2540);
+  margin: 0 0 12px;
+}
+
+.roi-title .accent {
+  color: var(--color-blue, #1976d2);
+}
+
+.roi-desc {
+  margin: 0 0 12px;
+  color: var(--gray-600, #666);
+}
+
+.roi-bullets {
+  margin: 0 0 12px 18px;
+  color: var(--gray-900, #333);
+}
+
+.fine-print {
+  font-size: 12px;
+  color: var(--gray-600, #666);
+}
+
+/* Form */
+.download-form {
+  display: grid;
+  gap: 14px;
+}
+
+.form-row {
+  display: grid;
+  gap: 6px;
+}
+
+label {
+  font-size: 14px;
+  color: var(--gray-900, #333);
+  font-weight: 600;
+}
+
+input,
+select {
+  appearance: none;
+  width: 100%;
+  padding: 12px 12px;
+  border-radius: 12px;
+  border: 1px solid rgba(0, 0, 0, 0.12);
+  background: #fff;
+  font-size: 14px;
+  outline: none;
+  transition: box-shadow 0.15s ease, border-color 0.15s ease,
+    transform 0.05s ease;
+}
+
+input:focus,
+select:focus {
+  border-color: var(--color-blue, #1976d2);
+  box-shadow: var(--focus);
+}
+
+.field-error {
+  font-size: 12px;
+  color: #d32f2f;
+}
+
+.btn-download {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  border: none;
+  background: var(--color-blue, #1976d2);
+  color: #fff;
+  padding: 12px 16px;
+  border-radius: 999px;
+  font-weight: 600;
+  cursor: pointer;
+  box-shadow: var(--shadow-md);
+  transition: transform 0.05s ease, filter 0.15s ease;
+}
+
+.btn-download:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+  filter: grayscale(0.15);
+}
+
+.btn-download:hover:not(:disabled) {
+  filter: brightness(1.03);
+}
+
+.btn-download:active:not(:disabled) {
+  transform: translateY(1px);
+}
+
+.form-success {
+  margin-top: 6px;
+  font-size: 14px;
+  color: #2e7d32;
+}
+
+/* Courses (bottom section) */
+.courses-grid {
+  row-gap: 18px;
+}
+
+.col-2-11 {
+  grid-column: 2 / 12;
+}
+
+.courses-head h3 {
+  margin: 0;
+  font-family: "Playfair Display", serif;
+  font-size: clamp(20px, 2.2vw, 28px);
+  color: var(--color-navy, #0a2540);
+}
+
+.subhead {
+  margin: 6px 0 0;
+  color: var(--gray-600, #666);
+}
+
+.courses-cards {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 16px;
+}
+
+.course-card {
+  background: #fff;
+  border: 1px solid rgba(0, 0, 0, 0.06);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  display: grid;
+  grid-template-rows: auto 1fr auto;
+  box-shadow: var(--shadow-sm);
+}
+
+.course-media img {
+  width: 100%;
+  height: 160px;
+  object-fit: cover;
+  display: block;
+}
+
+.course-body {
+  padding: 14px;
+}
+
+.course-body h4 {
+  margin: 0 0 6px;
+  font-size: 18px;
+  color: var(--color-navy, #0a2540);
+}
+
+.course-body p {
+  margin: 0;
+  color: var(--gray-600, #666);
+}
+
+.course-actions {
+  padding: 12px 14px 16px;
+}
+
+.btn-outline {
+  display: inline-block;
+  text-decoration: none;
+  border: 1.5px solid var(--color-blue, #1976d2);
+  color: var(--color-blue, #1976d2);
+  padding: 10px 14px;
+  border-radius: 999px;
+  font-weight: 600;
+  transition: background 0.15s ease, color 0.15s ease;
+}
+
+.btn-outline:hover {
+  background: var(--color-blue, #1976d2);
+  color: #fff;
+}
+
+/* Responsive */
+@media (max-width: 1024px) {
+  .roi-download .col-left {
+    grid-column: 2 / 12;
+  }
+  .roi-download .col-right {
+    grid-column: 2 / 12;
+  }
+  .courses-cards {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 640px) {
+  .grid12 {
+    width: 94vw;
+  }
+  .courses-cards {
+    grid-template-columns: 1fr;
+  }
+}
